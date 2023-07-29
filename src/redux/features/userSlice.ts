@@ -38,6 +38,7 @@ export const user = createSlice({
       userApi.endpoints.getUsers.matchFulfilled,
       (state, { payload }) => {
         state.data = payload.data;
+        state.filteredData = state.data;
       }
     );
   }

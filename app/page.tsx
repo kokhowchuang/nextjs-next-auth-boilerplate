@@ -23,14 +23,9 @@ export default function IndexPage({
   const page = searchParams.page ?? 1;
 
   const { isLoading, isFetching, data, error } = useGetUsersQuery({
-    page: page.toString()
+    page: page.toString(),
+    search
   });
-
-  useEffect(() => {
-    dispatch(setFilter(search));
-  }, [dispatch, search]);
-
-  console.log(filterData);
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">

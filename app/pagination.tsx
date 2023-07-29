@@ -22,6 +22,7 @@ export default function Pagination({
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+
     if (page) {
       params.set('page', page.toString());
     } else {
