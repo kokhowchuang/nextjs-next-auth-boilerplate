@@ -1,5 +1,6 @@
 import './globals.css';
 
+import { Providers } from '../src/redux/provider';
 import { Analytics } from '@vercel/analytics/react';
 import Nav from './nav';
 import Toast from './toast';
@@ -22,7 +23,7 @@ export default async function RootLayout({
         <Suspense>
           <Nav />
         </Suspense>
-        {children}
+        <Providers>{children}</Providers>
         <Analytics />
         <Toast />
       </body>

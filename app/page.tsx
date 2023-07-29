@@ -5,6 +5,8 @@ import { Card, Title, Text } from '@tremor/react';
 import Search from './search';
 import UsersTable from './table';
 import Example from './pagination';
+import { useAppSelector } from '../src/redux/hooks';
+import { useGetUsersQuery } from '../src/redux/services/userApi';
 
 // export const dynamic = 'force-dynamic';
 
@@ -13,10 +15,15 @@ export default function IndexPage({
 }: {
   searchParams: { q: string; page: number };
 }) {
+  const userlist = useAppSelector((state) => state.userReducer.data);
   const search = searchParams.q ?? '';
   const page = searchParams.page ?? 1;
 
+  console.log(userlist);
   const [users, setUsers] = useState([]);
+
+  const { isLoading, isFetching, data, error } = useGetUsersQuery(null);
+  console.log(data);
 
   useEffect(() => {
     async function fetchData() {
