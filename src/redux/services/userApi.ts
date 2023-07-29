@@ -18,13 +18,13 @@ type UserData = {
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  refetchOnFocus: true,
+  refetchOnFocus: false,
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://reqres.in/api/users'
   }),
   endpoints: (builder) => ({
-    getUsers: builder.query<UserData, null>({
-      query: () => '/'
+    getUsers: builder.query<UserData, { page: string }>({
+      query: ({ page }) => `/?page=${page}`
     })
   })
 });

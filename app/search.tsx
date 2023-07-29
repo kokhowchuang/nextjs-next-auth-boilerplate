@@ -5,9 +5,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState, useTransition } from 'react';
 
 export default function Search({ disabled }: { disabled?: boolean }) {
-  const [query, setQuery] = useState('');
-  const { replace } = useRouter();
   const pathname = usePathname();
+  const { replace } = useRouter();
+  const [query, setQuery] = useState('');
   const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
