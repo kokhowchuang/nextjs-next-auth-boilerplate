@@ -25,7 +25,13 @@ export const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    reset: () => initialState
+    reset: () => initialState,
+    setFilter(state, action: PayloadAction<string>) {
+      const pattern = new RegExp(`^${action.payload}`, 'i');
+      state.filteredData = state.data.filter(
+        (item) => pattern.test(item.first_name) || pattern.test(item.last_name)
+      );
+    }
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -37,5 +43,5 @@ export const user = createSlice({
   }
 });
 
-export const { reset } = user.actions;
+export const { reset, setFilter } = user.actions;
 export default user.reducer;

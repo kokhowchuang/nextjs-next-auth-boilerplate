@@ -7,6 +7,8 @@ import UsersTable from './table';
 import Pagination from './pagination';
 import { useAppSelector } from '../src/redux/hooks';
 import { useGetUsersQuery } from '../src/redux/services/userApi';
+import { setFilter } from '../src/redux/features/userSlice';
+import { useDispatch } from 'react-redux';
 
 // export const dynamic = 'force-dynamic';
 
@@ -15,14 +17,20 @@ export default function IndexPage({
 }: {
   searchParams: { q: string; page: number };
 }) {
-  const userlist = useAppSelector((state) => state.userReducer.data);
+  const dispatch = useDispatch();
+  const filterData = useAppSelector((state) => state.userReducer.filteredData);
   const search = searchParams.q ?? '';
   const page = searchParams.page ?? 1;
 
   const { isLoading, isFetching, data, error } = useGetUsersQuery({
     page: page.toString()
   });
-  console.log(data);
+
+  useEffect(() => {
+    dispatch(setFilter(search));
+  }, [dispatch, search]);
+
+  console.log(filterData);
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
