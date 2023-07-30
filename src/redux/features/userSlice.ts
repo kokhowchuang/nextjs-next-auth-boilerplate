@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { userApi } from '../services/userApi';
+import { stat } from 'fs';
 
 interface IUser {
   id: number | null;
@@ -9,15 +10,27 @@ interface IUser {
   avatar: string;
 }
 
+interface IPagination {
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
+}
+
 interface UserState {
   data: Array<IUser>;
-  filteredData: Array<IUser>;
+  meta: IPagination;
   status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState = {
   data: [],
-  filteredData: [],
+  meta: {
+    page: 0,
+    per_page: 0,
+    total: 0,
+    total_pages: 0
+  },
   status: 'idle'
 } as UserState;
 
@@ -25,24 +38,26 @@ export const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    reset: () => initialState,
-    setFilter(state, action: PayloadAction<string>) {
-      const pattern = new RegExp(`^${action.payload}`, 'i');
-      state.filteredData = state.data.filter(
-        (item) => pattern.test(item.first_name) || pattern.test(item.last_name)
-      );
-    }
+    reset: () => initialState
   },
   extraReducers: (builder) => {
     builder.addMatcher(
       userApi.endpoints.getUsers.matchFulfilled,
       (state, { payload }) => {
         state.data = payload.data;
-        state.filteredData = state.data;
+
+        const pageMeta = {
+          page: payload.page,
+          per_page: payload.per_page,
+          total: payload.total,
+          total_pages: payload.total_pages
+        };
+
+        state.meta = pageMeta;
       }
     );
   }
 });
 
-export const { reset, setFilter } = user.actions;
+export const { reset } = user.actions;
 export default user.reducer;

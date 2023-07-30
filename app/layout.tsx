@@ -1,15 +1,16 @@
 import './globals.css';
 
-import { Providers } from '../src/redux/provider';
+import { Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
+import { Providers } from '../src/redux/provider';
 import Nav from './nav';
 import Toast from './toast';
-import { Suspense } from 'react';
+import Footer from './footer';
 
 export const metadata = {
-  title: 'Next.js 13 + PlanetScale + NextAuth + Tailwind CSS',
+  title: "Zurich's ReactJS Technical Assessment",
   description:
-    'A user admin dashboard configured with Next.js, PlanetScale, NextAuth, Tailwind CSS, TypeScript, ESLint, and Prettier.'
+    'A user admin dashboard configured with Next.js, NextAuth, Tailwind CSS, TypeScript, ESLint, and Prettier.'
 };
 
 export default async function RootLayout({
@@ -26,6 +27,7 @@ export default async function RootLayout({
         <Providers>{children}</Providers>
         <Analytics />
         <Toast />
+        <Footer />
       </body>
     </html>
   );

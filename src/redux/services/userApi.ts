@@ -30,12 +30,14 @@ export const userApi = createApi({
     getUsers: builder.query<UserData, { page: string; search: string }>({
       async queryFn(arg, queryApi, extraOptions, baseQuery) {
         if (!arg.search) {
+          // if the search query is not present
           const result = await baseQuery(`?page=${arg.page}/`);
 
           return result.data
             ? { data: result.data as UserData }
             : { error: result.error as FetchBaseQueryError };
         } else {
+          // if the search query is presnet
           const result = await baseQuery(`?per_page=12/`);
 
           if (result.error) {
@@ -49,6 +51,8 @@ export const userApi = createApi({
               pattern.test(item.first_name) || pattern.test(item.last_name)
           );
           allUsers.data = filteredResult;
+          allUsers.page = 1;
+          allUsers.total_pages = 1;
           allUsers.total = filteredResult.length;
           allUsers.per_page = filteredResult.length;
 

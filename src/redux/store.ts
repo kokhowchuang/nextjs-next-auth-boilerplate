@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './features/counterSlice';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
+
 import userReducer from './features/userSlice';
 import { userApi } from './services/userApi';
-import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 export const store = configureStore({
   reducer: {
-    counterReducer,
     userReducer,
     [userApi.reducerPath]: userApi.reducer
   },
