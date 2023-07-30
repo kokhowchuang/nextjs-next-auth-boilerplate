@@ -1,8 +1,6 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { startTransition, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../src/redux/store';
 
 export default function Pagination({
   total,
@@ -17,7 +15,7 @@ export default function Pagination({
 }) {
   const pathname = usePathname();
   const { replace } = useRouter();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(currentPage);
 
   const from = (currentPage - 1) * limit + 1;
   const to = currentPage * limit;

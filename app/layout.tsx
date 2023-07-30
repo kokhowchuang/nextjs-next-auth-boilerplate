@@ -4,7 +4,6 @@ import { Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { Providers } from '../src/redux/provider';
 import Nav from './nav';
-import Toast from './toast';
 import Footer from './footer';
 
 export const metadata = {
@@ -26,7 +25,6 @@ export default async function RootLayout({
         </Suspense>
         <Providers>{children}</Providers>
         <Analytics />
-        <Toast />
         <Footer />
       </body>
     </html>

@@ -1,15 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Card, Title, Text } from '@tremor/react';
 import Search from '../search';
 import UsersTable from '../table';
 import Pagination from '../pagination';
-import { useAppSelector } from '../../src/redux/hooks';
 import { useGetUsersQuery } from '../../src/redux/services/userApi';
 import { useDispatch } from 'react-redux';
 
-// export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 
 export default function PlaygroundPage({
   searchParams
