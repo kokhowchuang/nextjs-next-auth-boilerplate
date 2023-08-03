@@ -7,7 +7,7 @@ import Nav from './nav';
 import Footer from './footer';
 
 export const metadata = {
-  title: "Zurich's ReactJS Technical Assessment",
+  title: "NextJS + Next Auth Boilerplate for Technical Assessment",
   description:
     'A user admin dashboard configured with Next.js, NextAuth, Tailwind CSS, TypeScript, ESLint, and Prettier.'
 };

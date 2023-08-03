@@ -1,46 +1,35 @@
-<picture>
+# NextJS + Next Auth Boilerplate
 
-<source  media="(prefers-color-scheme: dark)"  srcset="https://user-images.githubusercontent.com/9113740/201498864-2a900c64-d88f-4ed4-b5cf-770bcb57e1f5.png">
+## Packages
+![NextJS](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![NextAuth](https://img.shields.io/badge/nextauth.js-1fabf0?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TailwindCss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React-Hook-Form](https://img.shields.io/badge/ReactHookForm-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white)
 
-<source  media="(prefers-color-scheme: light)"  srcset="https://user-images.githubusercontent.com/9113740/201498152-b171abb8-9225-487a-821c-6ff49ee48579.png">
-
-<img  alt="Shows all of the tools in the stack for this template, also listed in the README file."  src="https://user-images.githubusercontent.com/9113740/201498152-b171abb8-9225-487a-821c-6ff49ee48579.png">
-
-</picture>
-
-<div  align="center"><strong>Insurance Company Take Home Assessment</strong></div>
+---
+<div  align="center"><strong>NextJS + Next Auth Boilerplate for Technical Assessment</strong></div>
 
 <div  align="center">Built with the Next.js App Router</div>
 
-## Scenario
+## Introduction
 
-You will be meeting the CIO and Digital Architect of Z**\*** APAC, one of the largest insurers in the region. Recently they have made efforts to digitize their technology stack and provide more solutions/open integrations to partners in the region.
+🚀 Boilerplate and Starter for Next.js 13+, Next Auth, Tailwind CSS and TypeScript.
 
-Z**\*** would like to build a customer portal for customers to create an account, purchase and/or renew their insurance, check their insurance portfolio, and submit a claim.
-
-The frontend of the portal needs to be built with React JS or Next JS. For this assignment, Google OAuth2 will be used to log customers in.
-
-## Frontend Web Functions
-
-1. Login – mechanism to authenticate the user. Upon successful login, the user will be redirected to the home page. Unauthorized users will be shown an error page if they attempt to access the URL directly.
-
-2. On the home screen, there are 3 major components: header, footer and the content area (body). The header and footer are reusable and configurable components.
-
-3. In the content section, you are required to make an API call to
-   https://reqres.in/api/users.
-
-4. Filter the API response to display records with first name starting with “G”, or last name starting with “W”. As the API response is paginated, you will need to traverse all pages to get the complete set of records.
 
 ## Getting Started
 
-In order to run the server, you're required to create your own `.env.local` file based on the `.env.local.example` file provided. You can use my credentials as below:
+In order to run the server, you're required to create your own `.env.local` file based on the `.env.local.example` file provided. 
 
-```
-GOOGLE_ID=1095203081299-6h4m8b6lvkgj4cdb333jdq52g8nkfoeu.apps.googleusercontent.com
-GOOGLE_SECRET=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
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=e88a3175a4ed553edf00b735be825bb045e8e60b5ceb30b70767662ea2f8da83
-```
+### Setup Google API 
+1. Visit [https://console.cloud.google.com/](https://console.cloud.google.com/)
+2. Click 'New Project' button to create a new project. Otherwise, select the project that you would like to manage.
+3. Choose 'APIs & Services' then 'Credentials' on the side menu. 
+4. Click 'Create Credentials' button then choose 'OAuth client ID'.
+5. For application type, select 'Web Application'.
+6. Add 'http://localhost:3000' in the authorized JavaScript origins.
+7. Add 'http://localhost:3000/api/auth/callback/google' in the authorized redirect URIs.
+8. You should be able to retreive the Client ID and Client Secret for the Google ID and Google Secret respectively in the .env file.
 
 Finally, run the following commands to start the development server:
 

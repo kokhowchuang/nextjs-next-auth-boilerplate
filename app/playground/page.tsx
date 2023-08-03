@@ -26,7 +26,7 @@ export default function PlaygroundPage({
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
       <Title>Users</Title>
-      <Text>A list of users retrieved from Zurich Insurance.</Text>
+      <Text>A list of users retrieved from API request.</Text>
       <Search />
       <Card className="mt-6">
         {error ? (

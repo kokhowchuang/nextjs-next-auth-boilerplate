@@ -37,9 +37,9 @@ export default function Footer() {
         ©2023 Copyright
         <a
           className="text-neutral-800 dark:text-neutral-400 ml-2"
-          href="https://www.zurich.com.my/"
+          href="https://github.com/kokhowchuang"
         >
-          Josh Chuang + Zurich Insurance
+          Josh Chuang 
         </a>
       </div>
     </footer>
